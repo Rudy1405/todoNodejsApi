@@ -45,7 +45,7 @@ async function readTask (req,res,next) { /// .get del task/taskid para obtener u
 async function updateTask (req,res,next){ /// .put  del task/taskid error because circular reference and JSON dont support that
     try {
         const taskReqId = req.params.taskId
-        let updatedTask = Task.findByIdAndUpdate(taskReqId, req.body )
+        let updatedTask = await Task.findByIdAndUpdate(taskReqId, req.body, {new: true} )
         if (updatedTask)
             res.json(updatedTask)
     } catch (error) {
