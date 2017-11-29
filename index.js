@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 
-let routes = require("./api/routes/todoRoutes"); // se crea el objeto routes que tendra las routas declaradas en todoRoutes
+let routes = require("./api/routes/index"); // se crea el objeto routes que tendra las routas declaradas en todoRoutes
 routes(app); // como ese obj tiene codigo node lo usamos como la app para registrar lasrutas
 
 // put the server running

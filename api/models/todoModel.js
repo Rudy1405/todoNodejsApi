@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-let TareaSchema = new Schema (
+const TareaSchema = new Schema (
     {
 
         name: {
