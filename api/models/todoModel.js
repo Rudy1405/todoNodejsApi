@@ -18,6 +18,10 @@ const TareaSchema = new Schema (
                 enum: ['completada', 'en proceso', 'pendiente']
             }],
             default: ['pendiente']  /// en caso de que no este en alun estado poner pendiente 
+        },
+        user: { 
+            type: Schema.Types.ObjectId, ref:"User",
+            Required: "UsuId required" 
         }
     }); // obj schema 
 

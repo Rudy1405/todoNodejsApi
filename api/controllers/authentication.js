@@ -31,6 +31,7 @@ function setUserInfo(user) {
  * Login route /auth/login
  */
 function login(req, res, next) {
+  console.log(req.user)
   let userInfo = setUserInfo(req.user)
 
   sendJSONresponse(res, 200, {

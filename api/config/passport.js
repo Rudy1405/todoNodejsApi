@@ -4,6 +4,7 @@ const User = require('../models/userModel')
 const config = require('./config')
 const JwtStrategy = require('passport-jwt').Strategy
 const ExtractJwt = require('passport-jwt').ExtractJwt
+const LocalStrategy = require('passport-local')
 //  Setting username field to email rather than username
 const localOptions = {
     usernameField: 'email',
@@ -12,6 +13,11 @@ const localOptions = {
   
   // Setting up local login Strategy
   const localLogin = new LocalStrategy(localOptions, function (email, password, done) {
+    if(!password){
+      return done(null, false, {
+        error: 'No se recibio la password'
+      })
+    }
     User.findOne({ email: email }, function (err, user) {
       if (err) {
         return done(err)
@@ -30,7 +36,7 @@ const localOptions = {
               error: 'Password incorrecta, alv!'
             })
           }
-  
+          console.log(user)
           return done(null, user)
         })
       }
